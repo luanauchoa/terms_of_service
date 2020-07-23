@@ -63,11 +63,11 @@ class SignatoryMapper extends QBMapper {
 	 * @param IUser $user
 	 * @return Signatory[]
 	 */
-	public function getSignatoriesByUser(IUser $user): array {
+	public function getSignatoriesByUser(IUser $user, $session): array {
 		$query = $this->db->getQueryBuilder();
 		$query->select('*')
 			->from(self::TABLENAME)
-			->where($query->expr()->eq('user_id', $query->createNamedParameter($user->getUID())));
+			->where($query->expr()->eq('user_id', $query->createNamedParameter($session->getId())));
 
 		$entities = [];
 		$result = $query->execute();
