@@ -58,12 +58,12 @@ class SignatoryMapper extends QBMapper {
 	}
 
 	/**
-	 * Get all signatories of a specific type for an user
+	 * Get all signatories of a specific type for an user and session
 	 *
 	 * @param IUser $user
 	 * @return Signatory[]
 	 */
-	public function getSignatoriesByUser(IUser $user, $session): array {
+	public function getSignatoriesBySession(IUser $user, $session): array {
 		$query = $this->db->getQueryBuilder();
 		$query->select('*')
 			->from(self::TABLENAME)
